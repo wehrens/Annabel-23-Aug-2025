@@ -1,0 +1,464 @@
+!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annabel's Foto Tour - Ankeveen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        /* Welcome screen */
+        #welcome {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        #welcome h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        #welcome p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .start-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .start-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Photo screens - initially hidden */
+        .photo-screen {
+            display: none;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .photo-screen.active {
+            display: block;
+        }
+        
+        .location-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .location-header h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .story {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        
+        .photo-container {
+            position: relative;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .photo-container img, .photo-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .action-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .action-section h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .action-section p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .next-btn {
+            display: block;
+            width: 100%;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .next-btn:hover {
+            background: #5a67d8;
+        }
+        
+        /* Completion screen */
+        #complete {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        #complete h2 {
+            font-size: 32px;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .emoji {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcome" class="screen active">
+            <h1>Welkom bij Annabel's Nostalgische Tour!</h1>
+            <p>Een reis terug in de tijd door Ankeveen</p>
+            <p>📸 15 bijzondere momenten te herbeleven</p>
+            <button class="start-btn" onclick="showPhoto(1)">Start de Tour</button>
+        </div>
+
+        <!-- Photo 1: Fietsje -->
+        <div id="photo1" class="photo-screen">
+            <div class="location-header">
+                <h2>Op het pleintje</h2>
+                <p class="story">Waar Anne's Fanfare repeteert... en kleine Annabel op haar fietsje rondreed</p>
+            </div>
+            <div class="photo-container">
+                <img src="Fietsje.jpg" alt="Annabel op het pleintje">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>Ga op dezelfde plek staan voor het gebouw. Bonuspunten als je een fiets meeneemt!</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(2)">Naar de volgende locatie →</button>
+        </div>
+
+        <!-- Photo 2: Goal -->
+        <div id="photo2" class="photo-screen">
+            <div class="location-header">
+                <h2>Boven op de goal!</h2>
+                <p class="story">Annabel en Ron als echte klimmers - wie had gedacht dat een goal zo'n goed klimrek was?</p>
+            </div>
+            <div class="photo-container">
+                <img src="Goal.jpg" alt="Annabel en Ron op de goal">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>Klim samen op de goal (als die er nog staat). Pas op je hoofd!</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(3)">Naar de volgende locatie →</button>
+        </div>
+
+        <!-- Photo 3: Klim (video) -->
+        <div id="photo3" class="photo-screen">
+            <div class="location-header">
+                <h2>Het klimrekje</h2>
+                <p class="story">"Kom op Annabel, je kunt het!" - En ze kon het! Zo trots!</p>
+            </div>
+            <div class="photo-container">
+                <video controls>
+                    <source src="Klim.mp4" type="video/mp4">
+                    Je browser ondersteunt geen video.
+                </video>
+            </div>
+            <div class="action-section">
+                <h3>📸 Video Challenge:</h3>
+                <p>Klim op het klimrek (of doe alsof het nog moeilijk is). Laat Nathalie je aanmoedigen!</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(4)">Naar de volgende locatie →</button>
+        </div>
+
+        <!-- Photo 4: Legakker -->
+        <div id="photo4" class="photo-screen">
+            <div class="location-header">
+                <h2>De grote legakker</h2>
+                <p class="story">Piepkleine Annabel op het wandelpad door de Ankeveense Plassen - wat een groot avontuur!</p>
+            </div>
+            <div class="photo-container">
+                <img src="Legakker.jpg" alt="Annabel op de legakker">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>Loop over de legakker en maak je zo klein mogelijk - of juist heel groot!</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(5)">Naar de kano! →</button>
+        </div>
+
+        <!-- Photo 5: Kano -->
+        <div id="photo5" class="photo-screen">
+            <div class="location-header">
+                <h2>Kano-avontuur</h2>
+                <p class="story">Met Anne op weg naar het mysterieuze huisje van Prins Bernhard...</p>
+            </div>
+            <div class="photo-container">
+                <img src="Kano.jpg" alt="Annabel met Anne in de kano">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>Precies dezelfde foto namaken! Zelfde poses in de kano op weg naar het mysterieuze huisje.</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(6)">Naar de volgende locatie →</button>
+        </div>
+
+        <!-- Photo 6: Plasrand -->
+        <div id="photo6" class="photo-screen">
+            <div class="location-header">
+                <h2>Aan de Ankeveense Plas</h2>
+                <p class="story">Annabel en Anne aan de rand van het water - altijd samen op avontuur</p>
+            </div>
+            <div class="photo-container">
+                <img src="Plasrand.jpg" alt="Annabel en Anne aan de plas">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>Precies namaken op dezelfde plek aan de plasrand - zelfde poses!</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(7)">Naar het bruggetje →</button>
+        </div>
+
+        <!-- Photo 7: Goog -->
+        <div id="photo7" class="photo-screen">
+            <div class="location-header">
+                <h2>Het bruggetje bij het Googpad</h2>
+                <p class="story">Anne en Annabel op hun vaste route</p>
+            </div>
+            <div class="photo-container">
+                <img src="Goog.jpg" alt="Op het bruggetje">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>Maak de foto zo precies mogelijk na - zelfde poses op het bruggetje!</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(8)">Terug naar huis →</button>
+        </div>
+
+        <!-- Photo 8: Autotje -->
+        <div id="photo8" class="photo-screen">
+            <div class="location-header">
+                <h2>De knalrode Fiat 500</h2>
+                <p class="story">Wat een beauty! En Annabel past er perfect bij</p>
+            </div>
+            <div class="photo-container">
+                <img src="Autotje.jpg" alt="Annabel bij rode Fiat 500">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>Maak dezelfde foto maar nu naast de blauwe Citroën DS!</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(9)">Naar de volgende →</button>
+        </div>
+
+        <!-- Photo 9: Vespa -->
+        <div id="photo9" class="photo-screen">
+            <div class="location-header">
+                <h2>Op de Vespa met Tim</h2>
+                <p class="story">Ready to ride! Annabel en Tim op de Vespa</p>
+            </div>
+            <div class="photo-container">
+                <img src="Vespa.jpg" alt="Annabel en Tim op de Vespa">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>Maak de foto opnieuw maar nu met Nathalie achterop de Vespa!</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(10)">Naar binnen →</button>
+        </div>
+
+        <!-- Photo 10: Centjes -->
+        <div id="photo10" class="photo-screen">
+            <div class="location-header">
+                <h2>Kastanjes verkocht!</h2>
+                <p class="story">Thuisgekomen van de markt - trots telt Annabel haar verdiende centjes</p>
+            </div>
+            <div class="photo-container">
+                <img src="Centjes.jpg" alt="Annabel telt geld">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>Perfect namaken! Je krijgt hetzelfde portemoneetje met munten én kastanjes. Tel ze precies zoals toen!</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(11)">Naar de keuken →</button>
+        </div>
+
+        <!-- Photo 11: Taartje -->
+        <div id="photo11" class="photo-screen">
+            <div class="location-header">
+                <h2>Bakken met bosvruchten</h2>
+                <p class="story">Chef Annabel vult de taartbodempjes - wat zal het lekker worden!</p>
+            </div>
+            <div class="photo-container">
+                <img src="Taartje.jpg" alt="Annabel maakt taartjes">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>We hebben dezelfde bodempjes en bosvruchten! Annabel mag ons toetje maken - en de foto perfect namaken!</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(12)">Naar de volgende →</button>
+        </div>
+
+        <!-- Photo 12: IMG_0717_3 -->
+        <div id="photo12" class="photo-screen">
+            <div class="location-header">
+                <h2>Naast haar portret - Dag 1</h2>
+                <p class="story">Annabel poseert trots naast een tekening van haarzelf</p>
+            </div>
+            <div class="photo-container">
+                <img src="IMG_0717_3.jpg" alt="Annabel naast tekening">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>Maak snel een tekening van Annabel en poseer ernaast!</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(13)">De dag erna... →</button>
+        </div>
+
+        <!-- Photo 13: IMG_1346_2 -->
+        <div id="photo13" class="photo-screen">
+            <div class="location-header">
+                <h2>Naast haar portret - Dag 2</h2>
+                <p class="story">De volgende dag nog een keer - zo leuk was het!</p>
+            </div>
+            <div class="photo-container">
+                <img src="IMG_1346_2.jpg" alt="Annabel weer naast tekening">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>Maak nog een tekening - of gebruik die van gisteren!</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(14)">Bijna klaar →</button>
+        </div>
+
+        <!-- Photo 14: Kermit -->
+        <div id="photo14" class="photo-screen">
+            <div class="location-header">
+                <h2>Met Kermit de Kikker</h2>
+                <p class="story">Ron en Annabel met hun groene vriend Kermit</p>
+            </div>
+            <div class="photo-container">
+                <img src="Kermit.jpg" alt="Ron en Annabel met Kermit">
+            </div>
+            <div class="action-section">
+                <h3>📸 Foto Challenge:</h3>
+                <p>We hebben dezelfde Kermit nog! Maak exact dezelfde foto met Ron en Kermit.</p>
+            </div>
+            <button class="next-btn" onclick="showPhoto(15)">Laatste foto! →</button>
+        </div>
+
+        <!-- Photo 15: IMG_3965_2 -->
+        <div id="photo15" class="photo-screen">
+            <div class="location-header">
+                <h2>Mr. Potato Head!</h2>
+                <p class="story">Annabel en Ron spelen met Mr. Potato Head - eindelloze lol!</p>
+            </div>
+            <div class="photo-container">
+                <img src="IMG_3965_2.jpg" alt="Annabel en Ron met Mr Potato Head">
+            </div>
+            <div class="action-section">
+                <h3>📸 Laatste Challenge:</h3>
+                <p>Speel een spelletje samen - het maakt niet uit wat, als je maar lol hebt!</p>
+            </div>
+            <button class="next-btn" onclick="showComplete()">Tour voltooien! 🎉</button>
+        </div>
+
+        <!-- Completion Screen -->
+        <div id="complete" class="photo-screen">
+            <h2>Tour Voltooid!</h2>
+            <div class="emoji">🎉</div>
+            <p>Wat een reis door de tijd!</p>
+            <p>Van kastanjes tellen tot kano varen...</p>
+            <p>Van klimrekjes tot Kermit...</p>
+            <div class="emoji">💕</div>
+            <p>Ankeveen en jullie huis blijven vol herinneringen</p>
+            <p><strong>Nu tijd voor nieuwe avonturen - met Nathalie erbij!</strong></p>
+            <div class="emoji">📸</div>
+            <p>Vergeet niet alle remake-foto's te delen!</p>
+        </div>
+    </div>
+
+    <script>
+        // Hide all screens
+        function hideAll() {
+            document.querySelectorAll('.screen, .photo-screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+        }
+
+        // Show specific photo
+        function showPhoto(num) {
+            hideAll();
+            document.getElementById('photo' + num).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Show completion screen
+        function showComplete() {
+            hideAll();
+            document.getElementById('complete').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Allow direct access via URL hash
+        window.addEventListener('load', function() {
+            const hash = window.location.hash;
+            if (hash) {
+                const photoNum = hash.replace('#photo', '');
+                if (photoNum && !isNaN(photoNum)) {
+                    showPhoto(parseInt(photoNum));
+                }
+            }
+        });
+    </script>
+</body>
+</html>
