@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Annabel's Foto Tour - Toen & Nu</title>
+    <title>Annabel bij Ron & Anne in Ankeveen - Toen & Nu</title>
     <style>
         * {
             margin: 0;
@@ -205,9 +205,9 @@
     <div class="container">
         <!-- Welcome Screen -->
         <div id="welcome" class="screen active">
-            <h1>Annabel's Nostalgische Tour - Toen & Nu!</h1>
+            <h1>Annabel bij Ron & Anne - Toen & Nu!</h1>
             <p>Een reis door de tijd in Ankeveen</p>
-            <p>📸 15 herinneringen perfect nagemaakt</p>
+            <p>📸 14 herinneringen perfect nagemaakt</p>
             <button class="start-btn" onclick="showPhoto(1)">Bekijk de Resultaten!</button>
         </div>
 
@@ -240,7 +240,7 @@
         <div id="photo2" class="photo-screen">
             <div class="location-header">
                 <h2>Boven op de goal!</h2>
-                <p class="story">Annabel en Ron als echte klimmers - wie had gedacht dat een goal zo'n goed klimrek was?</p>
+                <p class="story">Annabel en Ron als echte klimmers</p>
             </div>
             
             <div class="photo-container">
@@ -265,7 +265,7 @@
         <div id="photo3" class="photo-screen">
             <div class="location-header">
                 <h2>Het klimrekje</h2>
-                <p class="story">"Kom op Annabel, je kunt het!" - En ze kon het! Zo trots!</p>
+                <p class="story">"Kom op Annabel, je kunt het!"</p>
             </div>
             
             <div class="photo-container">
@@ -304,7 +304,7 @@
                 <img src="Legakker.jpg" alt="Annabel op de legakker - origineel">
             </div>
             
-            <div class="comparison-title">↓ 2025 - Met speciaal bier! ↓</div>
+            <div class="comparison-title">↓ 2025 - Met Nathalie en speciaal bier! ↓</div>
             
             <div class="photo-container">
                 <div class="photo-label">Nu</div>
@@ -371,7 +371,7 @@
         <div id="photo7" class="photo-screen">
             <div class="location-header">
                 <h2>Het bruggetje bij het Googpad</h2>
-                <p class="story">Anne en Annabel steken het bruggetje over</p>
+                <p class="story">Het bruggetje bij de Goog</p>
             </div>
             
             <div class="photo-container">
@@ -515,7 +515,7 @@
             
             <div class="photo-container">
                 <div class="photo-label">Nu</div>
-                <img src="IMG_0717_032025.jpg" alt="Annabel naast tekening - 2025">
+                <img src="IMG_0717-032025.jpg" alt="Annabel naast tekening - 2025">
             </div>
             
             <div class="nav-buttons">
@@ -524,23 +524,23 @@
             </div>
         </div>
 
-        <!-- Photo 13: IMG_1346_2 -->
+        <!-- Photo 13: Kermit -->
         <div id="photo13" class="photo-screen">
             <div class="location-header">
-                <h2>Naast haar portret - Dag 2</h2>
-                <p class="story">De volgende dag nog een keer - zo leuk was het!</p>
+                <h2>Met Kermit de Kikker</h2>
+                <p class="story">Ron en Annabel met hun groene vriend Kermit - na de Limoncello!</p>
             </div>
             
             <div class="photo-container">
                 <div class="photo-label">Toen</div>
-                <img src="IMG_1346_2.jpg" alt="Annabel weer naast tekening - origineel">
+                <img src="Kermit.jpg" alt="Ron en Annabel met Kermit - origineel">
             </div>
             
-            <div class="comparison-title">↓ 2025 - Andere kleren! ↓</div>
+            <div class="comparison-title">↓ 2025 - Zelfde Kermit! ↓</div>
             
             <div class="photo-container">
                 <div class="photo-label">Nu</div>
-                <img src="IMG_1346_22025.jpg" alt="Annabel weer naast tekening - 2025">
+                <img src="Kermit2025.jpg" alt="Ron en Annabel met Kermit - 2025">
             </div>
             
             <div class="nav-buttons">
@@ -549,7 +549,7 @@
             </div>
         </div>
 
-        <!-- Photo 14: Mr. Potato Head (was 15) -->
+        <!-- Photo 14: Mr. Potato Head -->
         <div id="photo14" class="photo-screen">
             <div class="location-header">
                 <h2>Mr. Potato Head!</h2>
@@ -574,10 +574,6 @@
             </div>
         </div>
 
-        <!-- Photo 15: Empty -->
-        <div id="photo15" class="photo-screen">
-        </div>
-
         <!-- Completion Screen -->
         <div id="complete" class="photo-screen">
             <h2>Tour Voltooid!</h2>
@@ -592,7 +588,7 @@
             <p>Tijd om alle foto's te printen en in te lijsten!</p>
             
             <div class="nav-buttons">
-                <button class="nav-btn prev" onclick="showPhoto(15)">← Terug naar foto's</button>
+                <button class="nav-btn prev" onclick="showPhoto(14)">← Terug naar foto's</button>
                 <button class="nav-btn next" onclick="showPhoto(1)">Begin opnieuw →</button>
             </div>
         </div>
@@ -612,7 +608,7 @@
             
             // Handle edge cases
             if (num < 1) num = 1;
-            if (num > 15) num = 15;
+            if (num > 14) num = 14;
             
             document.getElementById('photo' + num).classList.add('active');
             
